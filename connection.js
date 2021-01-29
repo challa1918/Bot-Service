@@ -19,7 +19,7 @@ app.post("/botservice", (req, res) => {
    var s = "none";
 
 
-   async function demo(agent) {
+   async function userIdentify(agent) {
       await Users.find({ phnno: req.body.queryResult.parameters.phone }, (err, results) => {
          if (err) {
             s = "Please enter a valid number";
@@ -78,7 +78,7 @@ app.post("/botservice", (req, res) => {
    });
 
    var intentMap = new Map();
-   intentMap.set('GetUser', demo)
+   intentMap.set('GetUser', userIdentify)
 
    intentMap.set('GetUser - yes', problem);
 
