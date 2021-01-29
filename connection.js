@@ -32,10 +32,10 @@ app.post("/botservice", (req, res) => {
          'name': 'username',
          'lifespan': 50,
          'parameters': {
-            'uname': s
+            'uname': username
          }
       });
-      agent.add("Hello " + s + " !!\nIs there any problem to be reported?");
+      agent.add("Hello " + username + " !!\nIs there any problem to be reported?");
 
 
    }
@@ -67,7 +67,7 @@ app.post("/botservice", (req, res) => {
 
       });
 
-      agent.add("Hey " + s + "! Sorry for your inconvenience, we got your problem, we are working on it. Use this code to check the status: " + myData.id);
+      agent.add("Hey " + username + "! Sorry for your inconvenience, we got your problem, we are working on it. Use this code to check the status: " + myData.id);
 
    }
 
