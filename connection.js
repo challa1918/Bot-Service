@@ -16,17 +16,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //Request Handler
 app.post("/botservice", (req, res) => {
 
-   var s = "none";
+   var username = "none";
 
 
    async function userIdentify(agent) {
       await Users.find({ phnno: req.body.queryResult.parameters.phone }, (err, results) => {
          if (err) {
-            s = "Please enter a valid number";
-            return console.log(err)
+               return console.log(err)
          }
          console.log(results[0].uname)
-         s = results[0].uname
+         username = results[0].uname
 
       });
       agent.context.set({
@@ -59,11 +58,11 @@ app.post("/botservice", (req, res) => {
          .catch(err => {
             res.status(400).send("unable to save to database " + err);
          });
-      var s = "no";
+      
       await Users.find({ phnno: agent.getContext("phnno").parameters.phone }, (err, results) => {
          if (err) return console.log(err)
          console.log(results[0].uname)
-         s = results[0].uname;
+         username = results[0].uname;
 
 
       });
